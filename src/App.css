@@ -1,0 +1,606 @@
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('https://media.istockphoto.com/id/1820694690/vector/cooking-background-with-decorative-frame-horizontal-flyer-with-food-items-meal-ingredients.jpg?s=612x612&w=0&k=20&c=Eup2tjfKPjVgsu8MgnVwBhICoAtj_fGTOfquPOkDnWc=');
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-attachment: fixed; /* Keep the image fixed when scrolling */
+  background-position: center; /* Center the image */
+  background-size: cover; /* Ensure the image covers the full viewport */
+  color: #333; /* Ensure text is readable */
+  min-height: 100vh; /* Allow the body to grow beyond the viewport */
+  overflow-y: auto; /* Enable vertical scrolling */
+  display: flex;
+  flex-direction: column; /* Flex layout for navbar and content */
+  justify-content: flex-start; /* Start content from the top */
+}
+
+
+/* Navbar Styles */
+.navbar {
+  background-color: #333333;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Left Section (Home Link) */
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+/* Right Section (Links and Search Bar) */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap; /* Prevent wrapping to the next line */
+}
+
+/* Style for Links */
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.navbar a:hover {
+  background-color: #f1f1f1;
+  color: #333;
+  transform: scale(1.1);
+}
+
+/* Search Bar */
+.navbar-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-search input {
+  padding: 5px 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.navbar-search input:focus {
+  border-color: #999;
+}
+
+.navbar-search button {
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-search button:hover {
+  background-color: #ddd;
+}
+
+/* Ensure responsive design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .navbar-search {
+    margin-top: 10px;
+  }
+}
+
+
+/* Favorite Button Styling */
+/* Container for the entire favorites section */
+.favorites-container {
+  padding: 20px;
+  width: 100%;
+  max-width: 960px; /* Adjust max-width to prevent container from becoming too wide */
+  margin: 0 auto; /* Center the container */
+  font-family: Arial, sans-serif;
+  border-radius: 8px;
+  box-sizing: border-box; /* Ensure padding is included in the container's width */
+}
+
+.favorites-container h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #0f0e0e;
+}
+
+/* Grid for displaying recipe cards */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 0 15px; /* Add padding to prevent grid items from touching the container edges */
+}
+
+/* Style for individual recipe cards */
+.recipe-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Styling for images inside the recipe cards */
+.recipe-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 2px solid #f1f1f1;
+}
+
+/* Title of the recipe */
+.recipe-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 15px;
+  color: #333;
+  text-align: center;
+}
+
+/* Prep time details */
+.recipe-prep-time {
+  margin-bottom: 5px; /* Reduced space below Prep Time */
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+}
+
+/* Style for the button inside the card */
+.card-actions {
+  margin-top: 5px; /* Reduced space above buttons */
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.view-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+button.view-btn:hover {
+  background-color: #0056b3;
+}
+
+button.delete-btn {
+  background-color: #ec4438;
+  color: white;
+}
+
+button.delete-btn:hover {
+  background-color: #c5564e;
+}
+
+/* If no favorites are found, display this message */
+.favorites-container p {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #423c3c;
+  padding: 20px;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+  .favorites-container {
+    padding: 15px;
+    width: 100%;
+    max-width: 100%; /* Allow the container to take up full width on smaller screens */
+  }
+
+  .recipe-grid {
+    padding: 0; /* Remove extra padding on small screens */
+  }
+}
+
+/* Recipe List */
+.recipe-list-container {
+  padding: 40px 20px; /* Extra padding to give space */
+  text-align: center;
+  height: calc(100vh - 80px); /* Full height minus navbar height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y:auto; /* Prevent scrolling */
+}
+
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Recipe Card */
+.recipe-card {
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  width: 100%;
+  max-width: 500px;
+}
+
+.recipe-card:hover {
+  transform: scale(1.05);
+}
+
+.recipe-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.recipe-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #333;
+}
+
+.recipe-prep-time {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px; /* Reduced space below Prep Time */
+}
+
+.card-actions {
+  margin-top: 5px; /* Reduced space above buttons */
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+button.view-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+button.view-btn:hover {
+  background-color: #0056b3;
+}
+
+button.update-btn {
+  background-color: #7ee081;
+  color: white;
+}
+
+button.update-btn:hover {
+  background-color: #ec4438;
+}
+
+button.delete-btn {
+  background-color: #ec4438;
+  color: white;
+}
+
+button.delete-btn:hover {
+  background-color: #c5564e;
+}
+
+/* Ensure responsive design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .recipe-grid {
+    display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+    max-height: 500px; /* Set a max height for the grid */
+  overflow-y: auto;  /* Enable vertical scrolling */
+  padding-right: 10px;  /* Optional: To account for scrollbar space */
+    /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); Adjust grid for smaller screens */
+  }
+}
+
+/*Add Recipe*/
+/* AddRecipe.css */
+.add-recipe-form {
+  max-width: 600px;
+  margin: 10px auto;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-recipe-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.form-textarea {
+  height: 150px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+/* Recipe Details */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.container {
+  max-width: 900px; /* Reduced width */
+  margin: 50px auto; /* Centered container */
+  padding: 15px; /* Padding inside container */
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  max-height: 550px; /* Set a maximum height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling when content overflows */
+}
+
+h1 {
+  font-size: 1.9rem;
+  text-align: center; /* Centers text horizontally */
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-top: 20px;
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding-left: 0;
+}
+
+ol {
+  list-style-type: decimal;
+  margin-left: 20px;
+  padding-left: 0;
+}
+
+li {
+  font-size: 1.0rem;
+  padding: 5px 0;
+  line-height: 1.6;
+}
+
+strong {
+  color: #333;
+}
+
+p {
+  font-size: 1.0rem;
+  margin-top: 10px;
+  line-height: 1.8;
+}
+
+/* Buttons */
+button {
+  padding: 12px 18px;
+  margin: 12px 5px;
+  font-size: 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s, opacity 0.3s;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+button.edit {
+  background: #4caf50;
+  color: white;
+}
+
+button.delete {
+  background: #f44336;
+  color: white;
+}
+
+button.back {
+  background: #2196f3;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Error and Loading */
+p.error,
+p.loading {
+  text-align: center;
+  margin-top: 20px;
+}
+
+p.error {
+  color: #d32f2f;
+}
+
+p.loading {
+  color: #2196f3;
+  font-size: 1.5rem;
+}
+
+
+/* Edit Recipe */
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Form Container */
+.form-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #eeeeee;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Input & Textarea Styling */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 150px;
+  resize: vertical;  /* Allows resizing vertically only */
+}
+
+/* Focus Effect */
+input:focus, textarea:focus {
+  border-color: #2196f3;
+  outline: none;
+}
+
+
+/* General Page Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Container for the search component */
+.search-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Search Input */
+.search-container input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  transition: border 0.3s ease;
+}
+
+.search-container input[type="text"]:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
